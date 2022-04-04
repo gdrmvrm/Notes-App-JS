@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/gdrmvrm/Notes-App-JS/issues"
   },
-  "homepage": "https://github.com/gdrmvrm/Notes-App-JS#readme"
+  "homepage": "https://github.com/gdrmvrm/Notes-App-JS#readme",
+  "dependencies": {
+    "jest": "^27.5.1"
+  }
 }
