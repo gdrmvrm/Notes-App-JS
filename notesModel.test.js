@@ -14,7 +14,7 @@ describe("Notes Model", () => {
       expect(model.getNotes()).toEqual(["Buy milk", "Go to the gym"]);
     });
 
-    it("reset the list of notes", () => {});
+    it("reset the list of notes", () => {
       const model = new NotesModel();
       model.addNote("Buy milk");
       model.reset();
