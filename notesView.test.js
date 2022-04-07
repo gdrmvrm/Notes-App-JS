@@ -1,16 +1,26 @@
 /**
  * @jest-environment jsdom
  */
+const NotesApi = require("./notesApi");
 const NotesView = require("./notesView");
 const NotesModel = require("./notesModel");
 const fs = require("fs");
 
+let model;
+let view;
+beforeEach(() => {
+  document.body.innerHTML = fs.readFileSync("./index.html");
+  model = new NotesModel();
+  const fakeApi = {
+    createNote: (note, callback) => {
+      "Test";
+    },
+  };
+  view = new NotesView(model, fakeApi);
+});
+
 describe("NotesView", () => {
   it("displays 2 notes", () => {
-    document.body.innerHTML = fs.readFileSync("./index.html");
-
-    const model = new NotesModel();
-    const view = new NotesView(model);
     model.addNote("Buy milk");
     model.addNote("Go to the gym");
     view.displayNotes();
@@ -19,10 +29,6 @@ describe("NotesView", () => {
   });
 
   it("adds a new note", () => {
-    document.body.innerHTML = fs.readFileSync("./index.html");
-
-    const model = new NotesModel();
-    const view = new NotesView(model);
     const buttonEl = document.querySelector("#add-notes-button");
     const inputEl = document.querySelector("#note-input");
     inputEl.value = "Hello there!";
@@ -36,10 +42,6 @@ describe("NotesView", () => {
   });
 
   it("removes previous notes before a new note is displayed", () => {
-    document.body.innerHTML = fs.readFileSync("./index.html");
-
-    const model = new NotesModel();
-    const view = new NotesView(model);
     model.addNote("Buy milk");
     model.addNote("Go to the gym");
     view.displayNotes();

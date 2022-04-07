@@ -5,15 +5,29 @@ const NotesApi = require("./notesApi");
 // available within the browser)
 require("jest-fetch-mock").enableMocks();
 
-describe("Notes App class", () => {
+describe("Notes API class", () => {
   it("calls fetch and loads notes info", async () => {
     const api = new NotesApi();
     fetch.mockResponseOnce(
-      JSON.stringify(["This note is coming from the server"])
+      JSON.stringify({ 0: ["This note is coming from the server"] })
     );
 
     api.loadNotes((notes) => {
-      expect(notes).toEqual(["This note is coming from the server"]);
+      expect(notes[0]).toEqual(["This note is coming from the server"]);
+    });
+  });
+
+  it("posts a note to the server", () => {
+    const api = new NotesApi();
+
+    fetch.mockResponseOnce(
+      JSON.stringify({
+        0: "This note is coming from the server",
+      })
+    );
+
+    api.createNote("This note is coming from the server", (response) => {
+      expect(response[0]).toBe("This note is coming from the server");
     });
   });
 });
