@@ -8,10 +8,15 @@ class NotesView {
     this.buttonEl.addEventListener("click", () => {
       const newNote = this.inputEl.value;
       this.addNewNotes(newNote);
+      this.inputEl.value = "";
     });
   }
 
   displayNotes() {
+    document.querySelectorAll(".note").forEach((element) => {
+      element.remove();
+    });
+
     const theNotes = this.model.getNotes();
 
     theNotes.forEach((note) => {

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/gdrmvrm/Notes-App-JS#readme",
   "dependencies": {
-    "jest": "^27.5.1"
+    "jest": "^27.5.1",
+    "jest-fetch-mock": "^3.0.3"
   }
 }

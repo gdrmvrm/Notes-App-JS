@@ -34,4 +34,16 @@ describe("NotesView", () => {
       "Hello there!"
     );
   });
+
+  it("removes previous notes before a new note is displayed", () => {
+    document.body.innerHTML = fs.readFileSync("./index.html");
+
+    const model = new NotesModel();
+    const view = new NotesView(model);
+    model.addNote("Buy milk");
+    model.addNote("Go to the gym");
+    view.displayNotes();
+    view.displayNotes();
+    expect(document.querySelectorAll("div.note").length).toEqual(2);
+  });
 });
