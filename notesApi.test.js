@@ -22,12 +22,12 @@ describe("Notes API class", () => {
 
     fetch.mockResponseOnce(
       JSON.stringify({
-        0: "This note is coming from the server",
+        0: "Hello!",
       })
     );
 
-    api.createNote("This note is coming from the server", (response) => {
-      expect(response[0]).toBe("This note is coming from the server");
+    api.createNote("Hello!", (response) => {
+      expect(response[0]).toEqual("Hello!");
     });
   });
 });
