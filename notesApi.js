@@ -16,12 +16,11 @@ class NotesApi {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    }).then((response) =>
-      response.json().then((data) => {
+    })
+      .then((response) => response.json())
+      .then((data) => {
         callback(data);
-        console.log("Success:", data);
-      })
-    );
+      });
   }
 }
 

@@ -9,7 +9,7 @@ class NotesView {
     this.buttonEl.addEventListener("click", () => {
       const newNote = this.inputEl.value;
       this.addNewNotes(newNote);
-      this.api.createNote(newNote);
+      this.api.createNote(newNote, (note) => {});
       this.inputEl.value = "";
     });
   }
@@ -33,6 +33,8 @@ class NotesView {
     this.model.addNote(newNote);
     this.displayNotes();
   }
+
+  displayError() {}
 }
 
 module.exports = NotesView;
